@@ -1,8 +1,10 @@
-body {
-  color: #ff2778;
+* {
+  list-style-type: none;
+  text-decoration: none;
+  
 }
 
-.blue {
-  color: green;
-  border: 1px solid yellow;
+.nav-ul-main {
+  display: flex;
+  justify-content: space-between;
 }

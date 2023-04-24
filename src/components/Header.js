@@ -1,9 +1,14 @@
+import Navbar from "./Navbar";
+
 const Header = () => {
   return (
-    <header>
-      <h1>todos</h1>
-      <p>Items will persist in the browser local storage</p>
-    </header>
+    <>
+      <Navbar />
+      <header>
+        <h1>todos</h1>
+        <p>Items will persist in the browser local storage</p>
+      </header>
+    </>
   );
 };
 
