@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/TodoItem.module.css';
+import PropTypes from 'prop-types';
 
 const TodoItem = ({
   itemProp, handleChange, delTodo, setUpdate,
