@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import styles from '../styles/TodoItem.module.css';
 
-const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
+const TodoItem = ({
+  itemProp, handleChange, delTodo, setUpdate,
+}) => {
   const [editing, setEditing] = useState(false);
 
   const handleEditing = () => {
     setEditing(true);
-  }
+  };
 
   const handleUpdatedDone = (event) => {
     if (event.key === 'Enter') {
@@ -21,8 +23,8 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
     textDecoration: 'line-through',
   };
 
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
     viewMode.display = 'none';
   } else {
@@ -37,12 +39,12 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
           checked={itemProp.completed}
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>Edit</button>
-        <button onClick={() => delTodo(itemProp.id)}>Delete</button>
-        <span style={itemProp.completed? completedStyle : null}>{itemProp.title}</span>
+        <button type="button" onClick={handleEditing}>Edit</button>
+        <button type="button" onClick={() => delTodo(itemProp.id)}>Delete</button>
+        <span style={itemProp.completed ? completedStyle : null}>{itemProp.title}</span>
       </div>
-      <input 
-        type='text'
+      <input
+        type="text"
         value={itemProp.title}
         className={styles.textInput}
         style={editMode}
@@ -50,7 +52,18 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
         onKeyDown={handleUpdatedDone}
       />
     </li>
-  )
+  );
+};
+
+TodoItem.propTypes = {
+  itemProp: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
 };
 
 export default TodoItem;

@@ -5,8 +5,8 @@ const InputTodo = ({ addTodoItem }) => {
   const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
-    setTitle(e.target.value)
-  }
+    setTitle(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,13 +21,13 @@ const InputTodo = ({ addTodoItem }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className='form-container'>
-        <input type="text" placeholder="Add todo..." value={title} onChange={handleChange} className='input-text' /> 
-        <button className='input-submit'>Submit</button>
+      <form onSubmit={handleSubmit} className="form-container">
+        <input type="text" placeholder="Add todo..." value={title} onChange={handleChange} className="input-text" />
+        <button className="input-submit">Submit</button>
       </form>
-      <span className='submit-warning'>{message}</span>
+      <span className="submit-warning">{message}</span>
     </>
-  )
+  );
 };
 
 export default InputTodo;
