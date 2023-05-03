@@ -1,17 +1,11 @@
-const TodoItem = ({ itemProp, setTodos }) => {
-  const handleChange = (id) => {
-    setTodos((prevState) =>
-      prevState.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      })
-    );
-  };
+import { useState } from 'react';
+
+const TodoItem = ({ itemProp, handleChange, delTodo }) => {
+  const [editing, setEditing] = useState(false);
+
+  const handleEditing = () => {
+    setEditing(true);
+  }
 
   return <li>
     <input
@@ -19,6 +13,8 @@ const TodoItem = ({ itemProp, setTodos }) => {
       checked={itemProp.completed}
       onChange={() => handleChange(itemProp.id)}
     />
+    <button onClick={handleEditing}>Edit</button>
+    <button onClick={() => delTodo(itemProp.id)}>Delete</button>
     {itemProp.title}
   </li>;
 };
